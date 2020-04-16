@@ -1,6 +1,6 @@
 # WSS calculator for MRI
 Wall shear stress (WSS) calculation for 4D Flow MRI. 
-This is an implementation of the paper 
+This is a Python implementation of the paper 
 [Assessment of the accuracy of MRI wall shear stress estimation using numerical simulations](https://onlinelibrary.wiley.com/doi/full/10.1002/jmri.23610)
 
 # Comparison with CFD ground truth
@@ -8,26 +8,30 @@ This is an implementation of the paper
 The geometry used in this example was taken from the [2nd CFD Challenge MICCAI 2013](http://www.vascularmodel.org/miccai2013/). CFD simulation is performed using Ansys.
 
 A comparison between the WSS computed using CFD (ground truth) and the ones produced by the script. The synthetic MRI velocity images contained in the example data file with a voxel size of 0.59375 mm.
-![WSS comparison](./img/wss-comparison.png)
+
+<p align="center">
+    <img src="./img/wss-comparison.png">
+</p>
 
 # Dependencies
 The complete requirements can be found in requirements.txt.
 
-Our code relies heavily on the PyVista library.
+Our code relies heavily on the PyVista library. Python 3.6 is recommended.
 
 # Running the demo
 Clone the repository
 
     git clone https://github.com/EdwardFerdian/wss_mri_calculator.git
 
-Go to the src directory and run the script. An example data file has been provided under data/
+Go to the directory, install the requirements, and run the script. An example data file has been provided under data/
 
+    pip install -r requirements.txt
     cd src/
     python calculate_wss.py
 
-
-![Imgur](https://i.imgur.com/o9eCMXC.gif)
-
+<p align="center">
+    <img src="https://i.imgur.com/5Zhjdr0.gif">
+</p>
 
 # Arguments
 | **Option** | Description |
@@ -69,10 +73,9 @@ We implemented 3 of the methods explained in the paper:
         python calculate_wss.py
 
 # Workflow
-<img src="./img/wss-workflow.png" width="600">
-
-Created by: @zjzj
-
+<p align="center">
+    <img src="./img/wss-workflow.png" width="600">
+</p>
 
 # Input and output file
 The current code accepts and hdf5 file. You have to define your own data_loader to support different file formats. The input file consists of velocity vectors represented as separate components (similar to 4D Flow MRI), as u, v, w representing velocity in x, y, and z direction. A non-binary mask is also provided with the same dimension of the velocity map.
@@ -81,11 +84,11 @@ The script shows the plot of the extracted volume, surface, extracted equidistan
 
 An option to save the extracted volume and surface as a .vtk file is also provided.
 
-![Example result plot](./img/wss-result.png)
+<p align="center">
+    <img src="./img/wss-result.png">
+</p>
 
-# Statement
-This software is for research purposes only.
+# License
 
-Please contact us for the licence of commercial purposes. 
-
-All rights are preserved.
+* For academic and non-commercial use only.
+* Please contact us for the licence of commercial purposes. 
