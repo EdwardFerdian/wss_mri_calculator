@@ -49,7 +49,7 @@ def main():
     parser.add_argument('--smoothing', type=int, default=500, help='Number of iterations to adjust point coordinates using Laplacian smoothing.')
     parser.add_argument('--parabolic', type=boolean_string, default=True, help='Use parabolic curve fitting to determine the slope. When False use linear.')
     parser.add_argument('--no-slip', type=boolean_string, default=True, help='Set the wall velocity to zero for WSS calculation')
-    parser.add_argument('--viscosity', type=float, default=4, help='Fluid viscosity (default is 4centiPoise - blood viscosity)')
+    parser.add_argument('--viscosity', type=float, default=4, help='Fluid viscosity (default is 4 centiPoise - blood viscosity)')
     parser.add_argument('--show-plot', type=boolean_string, default=True, help='Plot the images using PyVista plotter')
     parser.add_argument('--show-wss-contours', type=boolean_string, default=False, help='Show WSS contours for visualization')
     parser.add_argument('--save-to-vtk', type=float, default=False, help='Save volume mesh and surface WSS in vtk file')

@@ -24,6 +24,10 @@ Go to the src directory and run the script. An example data file has been provid
     cd src/
     python calculate_wss.py
 
+
+![Imgur](https://i.imgur.com/4x1h0lk.gif)
+
+
 # Arguments
 | **Option** | Description |
 | --- | --- |
@@ -34,7 +38,7 @@ Go to the src directory and run the script. An example data file has been provid
 | --smoothing | Number of iterations to smooth surface using Laplacian smoothing.
 | --parabolic | Use parabolic curve fitting to determine the slope. When False use linear.
 | --no-slip | Set the wall velocity to zero for WSS calculation
-| --viscosity | Fluid viscosity ( in 4centiPoise - blood viscosity)
+| --viscosity | Fluid viscosity (default is 4 centiPoise - blood viscosity)
 | --show-plot | Plot the images using PyVista plotter
 | --show-wss-contours | Show WSS contours for visualization
 | --save-to-vtk |  Save volume mesh and surface WSS in vtk file
