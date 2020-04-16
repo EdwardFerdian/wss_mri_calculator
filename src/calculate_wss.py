@@ -31,24 +31,34 @@ def create_uniform_vector(u,v,w, spacing):
     mesh.set_active_scalars("Velocity")
     return mesh
 
-if __name__ == "__main__":
+def boolean_string(s):
+    """
+        Python argparse for bool consider the input as str. 
+        Handle it with this function
+    """
+    if s not in {'False', 'True'}:
+        raise ValueError('Not a valid boolean string')
+    return s == 'True'
+
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--input-file', type=str, default='../data/aorta03_sample.h5', help='Phase images or velocity vectors, containing u,v,w vector values')
     parser.add_argument('--mask-file', type=str, default='../data/aorta03_sample.h5', help='Mask/segmentation file. Can also be a .stl with another loader')
     parser.add_argument('--voxel-size', type=float, default=0.6, help='Voxel size, assumed to be isotropic (in mm)')
     parser.add_argument('--inward-distance', type=float, default=0.6, help='Inward normal distance to sample points from wall (in mm)')
     parser.add_argument('--smoothing', type=int, default=500, help='Number of iterations to adjust point coordinates using Laplacian smoothing.')
-    parser.add_argument('--parabolic-fitting', type=bool, default=True, help='Use parabolic curve fitting to determine the slope. When False use linear.')
-    parser.add_argument('--no-slip-condition', type=bool, default=True, help='Set the wall velocity to zero for WSS calculation')
+    parser.add_argument('--parabolic', type=boolean_string, default=True, help='Use parabolic curve fitting to determine the slope. When False use linear.')
+    parser.add_argument('--no-slip', type=boolean_string, default=True, help='Set the wall velocity to zero for WSS calculation')
     parser.add_argument('--viscosity', type=float, default=4, help='Fluid viscosity (default is 4centiPoise - blood viscosity)')
-    parser.add_argument('--show-plot', type=bool, default=True, help='Plot the images using PyVista plotter')
-    parser.add_argument('--show-wss-contours', type=bool, default=False, help='Show WSS contours for visualization')
+    parser.add_argument('--show-plot', type=boolean_string, default=True, help='Plot the images using PyVista plotter')
+    parser.add_argument('--show-wss-contours', type=boolean_string, default=False, help='Show WSS contours for visualization')
     parser.add_argument('--save-to-vtk', type=float, default=False, help='Save volume mesh and surface WSS in vtk file')
     parser.add_argument('--vtk-filename', type=str, default='result', help='Prefix for the output file when save_to_vtk is True')
     parser.add_argument('--loglevel', type=int, default=logging.INFO, help='Logging level')
     
     args = parser.parse_args()
     
+    print('\nArguments:', args)
     # set the logging level on the imported script
     logging.getLogger("wss_utils").setLevel(args.loglevel)  
 
@@ -62,8 +72,8 @@ if __name__ == "__main__":
     inward_distance = args.inward_distance
     smoothing_iteration = args.smoothing
 
-    no_slip_condition= args.no_slip_condition
-    parabolic_fitting = args.parabolic_fitting
+    no_slip_condition= args.no_slip
+    parabolic_fitting = args.parabolic
     viscosity = args.viscosity # in centiPoise, velocities are in m/s so they cancel out each other
 
     # Specify input filepath and segmentation file path
@@ -220,3 +230,6 @@ if __name__ == "__main__":
         # Link all the views and show the plot
         p.link_views()
         p.show(full_screen=True)
+
+if __name__ == "__main__":
+    main()
