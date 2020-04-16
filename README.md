@@ -5,13 +5,14 @@ This is an implementation of the paper
 
 # Comparison with CFD ground truth
 
-The geometry used in this example was taken from the [2nd CFD Challenge MICCAI 2013](http://www.vascularmodel.org/miccai2013/) CFD simulation is performed using Ansys.
+The geometry used in this example was taken from the [2nd CFD Challenge MICCAI 2013](http://www.vascularmodel.org/miccai2013/). CFD simulation is performed using Ansys.
 
 A comparison between the WSS computed using CFD (ground truth) and the ones produced by the script. The synthetic MRI velocity images contained in the example data file with a voxel size of 0.59375 mm.
 ![WSS comparison](./img/wss-comparison.png)
 
 # Dependencies
-The complete requirements can be found in requirements.txt
+The complete requirements can be found in requirements.txt.
+
 Our code relies heavily on the PyVista library.
 
 # Running the demo
@@ -25,7 +26,7 @@ Go to the src directory and run the script. An example data file has been provid
     python calculate_wss.py
 
 
-![Imgur](https://i.imgur.com/4x1h0lk.gif)
+![Imgur](https://i.imgur.com/o9eCMXC.gif)
 
 
 # Arguments
@@ -58,7 +59,7 @@ We implemented 3 of the methods explained in the paper:
     
     Velocity on the wall set to zero (default option) and linear interpolation is used from the wall points to the inward equidistant points.
 
-        python calculate_wss.py --parabolic False --no-slip False
+        python calculate_wss.py --parabolic False
 
 
 3. **Velocity-based method using parabolic fitting (DEFAULT)**
