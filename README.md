@@ -3,6 +3,13 @@ Wall shear stress (WSS) calculation for 4D Flow MRI.
 This is an implementation of the paper 
 [Assessment of the accuracy of MRI wall shear stress estimation using numerical simulations](https://onlinelibrary.wiley.com/doi/full/10.1002/jmri.23610)
 
+# Comparison with CFD ground truth
+
+The geometry used in this example was taken from the [2nd CFD Challenge MICCAI 2013](http://www.vascularmodel.org/miccai2013/) CFD simulation is performed using Ansys.
+
+A comparison between the WSS computed using CFD (ground truth) and the ones produced by the script. The synthetic MRI velocity images contained in the example data file with a voxel size of 0.59375 mm.
+![WSS comparison](./img/wss-comparison.png)
+
 # Dependencies
 The complete requirements can be found in requirements.txt
 Our code relies heavily on the PyVista library.
@@ -67,13 +74,6 @@ The script shows the plot of the extracted volume, surface, extracted equidistan
 An option to save the extracted volume and surface as a .vtk file is also provided.
 
 ![Example result plot](./img/wss-result.png)
-
-# Comparison with CFD ground truth
-
-The geometry used in this example was taken from the [2nd CFD Challenge MICCAI 2013](http://www.vascularmodel.org/miccai2013/) CFD simulation is performed using Ansys.
-
-A comparison between the WSS computed using CFD (ground truth) and the ones produced by the script. The synthetic MRI velocity images contained in the example data file with a voxel size of 0.59375 mm.
-![WSS comparison](./img/wss-comparison.png)
 
 # Statement
 This software is for research purposes only.
