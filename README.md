@@ -29,7 +29,7 @@ Go to the src directory and run the script. An example data file has been provid
 | --- | --- |
 | --input-file | Phase images or velocity vectors, containing u,v,w vector values|
 | --mask-file | Mask/segmentation file. Can also be a .stl with another loader)
-| --voxel-size | Voxel size | assumed to be isotropic (in mm)
+| --voxel-size | Voxel size, assumed to be isotropic (in mm)
 | --inward-distance  | Inward normal distance to sample points from wall (in mm)
 | --smoothing | Number of iterations to smooth surface using Laplacian smoothing.
 | --parabolic | Use parabolic curve fitting to determine the slope. When False use linear.
@@ -44,27 +44,30 @@ Go to the src directory and run the script. An example data file has been provid
 # Supported methods
 We implemented 3 of the methods explained in the paper:
 
-1. Linear extrapolation method (Vel-LE method)
+1. **Linear extrapolation method (Vel-LE method)**
     
     We can simulate this method by setting the options to the following. This option is not recommended. Linear interpolation is performed and velocity on the wall retrieved from the surface, which depends greatly on the segmentation.
 
         python calculate_wss.py --parabolic False --no-slip False
 
-2. Velocity-based method using wall position (Vel-Wall)
+2. **Velocity-based method using wall position (Vel-Wall)**
     
     Velocity on the wall set to zero (default option) and linear interpolation is used from the wall points to the inward equidistant points.
 
         python calculate_wss.py --parabolic False --no-slip False
 
 
-3. Velocity-based method using parabolic fitting (DEFAULT)
+3. **Velocity-based method using parabolic fitting (DEFAULT)**
 
     Velocity on the wall set to zero (default option) and n-1 polynomial is used to fit the curve (default option)
 
         python calculate_wss.py
 
 # Workflow
-![WSS Calculation Workflow](./img/wss-workflow.png)
+<img src="./img/wss-workflow.png" width="600">
+
+Created by: @zjzj
+
 
 # Input and output file
 The current code accepts and hdf5 file. You have to define your own data_loader to support different file formats. The input file consists of velocity vectors represented as separate components (similar to 4D Flow MRI), as u, v, w representing velocity in x, y, and z direction. A non-binary mask is also provided with the same dimension of the velocity map.
@@ -77,4 +80,7 @@ An option to save the extracted volume and surface as a .vtk file is also provid
 
 # Statement
 This software is for research purposes only.
-Please contact us for the licence of commercial purposes. All rights are preserved.
+
+Please contact us for the licence of commercial purposes. 
+
+All rights are preserved.
