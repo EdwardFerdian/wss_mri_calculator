@@ -92,3 +92,4 @@ An option to save the extracted volume and surface as a .vtk file is also provid
 
 * For academic and non-commercial use only.
 * Please contact us for the licence of commercial purposes. 
+this is important
