@@ -159,7 +159,7 @@ def main():
     # Check if the tangential vectors of pc1 and pc2 are in the same direction 
     c = pc1_tangent * pc2_tangent 
     c = np.sum(c, axis=1)
-    c = c.clip(min = -1, max = 1) # Assign the direction
+    c = np.sign(c) # Assign the direction
     pc2_tangent_mag =  c * pc2_tangent_mag # Give negative magnitude value if pc2 is in different direction
     # We don't check based on pc0 because we cannot trust the direction of pc0 vectors which may be affected by segmentation
     ## == end ==
